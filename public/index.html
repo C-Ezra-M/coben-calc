@@ -1,21 +1,59 @@
 <!doctype html>
-<html>
-<head lang='en'>
-	<meta charset='utf-8'>
-	<meta name='viewport' content='width=device-width'>
-	<title>rollup-starter-app</title>
+<html lang="en">
 
-	<style>
-		body {
-			font-family: 'Helvetica Neue', Arial, sans-serif;
-			color: #333;
-			font-weight: 300;
-		}
-	</style>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>COBEN Calculator</title>
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="stylesheet" href="https://get.mavo.io/mavo.css" />
+    <link rel="stylesheet" href="style.css">
+    <!--<script src="https://get.mavo.io/mavo.js"></script>-->
+    <script src="mavo.js"></script>
+    <script src="bundle.js" defer></script>
 </head>
+
 <body>
-	<h1>rollup-starter-app</h1>
-	<p>The time is <span id='time-now'>...</span></p>
-	<script src='bundle.js'></script>
+    <div class="mv-autoedit" mv-app mv-bar="none" mv-storage="local" mv-plugins="list-separator" id="app">
+        <h1>COBEN Calculator</h1>
+        <p>COBEN, short for <b>C</b>hance <b>O</b>f <b>B</b>eing <b>E</b>liminated <b>N</b>ext, is a percentage denoting
+            the probability of a contestant getting eliminated, based on the current scores of everyone still in and the
+            rewards for the next event.</p>
+        <p>This calculator is built with <a href="https://mavo.io">Mavo</a>, a library for building web applications in
+			HTML, saving me the time and hassle with interactivity.</p>
+
+        <h2>Current scores</h2>
+        <table class="current-scores">
+            <thead>
+                <th>Name</th>
+                <th>Score</th>
+            </thead>
+            <tbody mv-list property="contestant">
+                <tr mv-list-item>
+                    <td property="name"></td>
+                    <td property="score"></td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="mv-add-contestant">Add contestant</button>
+        <h2>Rewards</h2>
+        <ol property="reward" mv-list mv-list-separator="\n">
+            <li mv-list-item></li>
+        </ol>
+        <div>
+            [contestant]
+        </div>
+    </div>
+    <script type="module" src="/main.js"></script>
+
+    state = {
+    rewards: [],
+    eliminations: 1,
+    simulations: 1_000_000,
+    systematic: false,
+    precision: 3,
+    }
 </body>
+
 </html>

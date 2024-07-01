@@ -1,35 +1,16 @@
-# rollup-starter-app
+# COBEN Calculator
 
-This repo contains a bare-bones example of how to create an application using Rollup, including importing a module from `node_modules` and converting it from CommonJS.
+This is a COBEN calculator made with [Mavo](https://mavo.io), bundled with [Rollup](https://rollupjs.org).
 
-*See also https://github.com/rollup/rollup-starter-lib*
+## Isn't there another one?
 
+I do know about DocDesk's COBEN calculator. My calculator is designed with four goals in mind:
 
-## Getting started
+- Easy mass data entry
+- Systematic calculation
+- Mobile friendliness
+- JSON I/O
 
-Clone this repository and install its dependencies:
+# Notice about Mavo source code
 
-```bash
-git clone https://github.com/rollup/rollup-starter-app
-cd rollup-starter-app
-npm install
-
-# or
-npx degit "rollup/rollup-starter-app" my-app
-cd my-app
-npm install
-```
-
-The `public/index.html` file contains a `<script src='bundle.js'>` tag, which means we need to create `public/bundle.js`. The `rollup.config.js` file tells Rollup how to create this bundle, starting with `src/main.js` and including all its dependencies, including [date-fns](https://date-fns.org).
-
-`npm run build` builds the application to `public/bundle.js`, along with a sourcemap file for debugging.
-
-`npm start` launches a server, using [serve](https://github.com/zeit/serve). Navigate to [localhost:3000](http://localhost:3000).
-
-`npm run watch` will continually rebuild the application as your source files change.
-
-`npm run dev` will run `npm start` and `npm run watch` in parallel.
-
-## License
-
-[MIT](LICENSE).
+The Mavo source code is included within this repository because it isn't pulled from the upstream Mavo repository. Instead, it contains [a fix](https://github.com/mavoweb/mavo/pull/1025/commits/8276e86647300911369fc0b1b63977157add8d66), referenced in [mavoweb/mavo#1025](https://github.com/mavoweb/mavo/pull/1025).
