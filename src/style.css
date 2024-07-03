@@ -1,0 +1,17 @@
+:root {
+    --bs-body-font-family: Inter, sans-serif;
+    font-feature-settings: 'liga' 1, 'calt' 1; /* fix for Chrome */
+}
+@supports (font-variation-settings: normal) {
+    :root { --bs-body-font-family: InterVariable, sans-serif; }
+}
+
+.columns {
+    columns: 3 22rem;
+    h2 {
+        margin-top: 0;
+    }
+    .column {
+        break-inside: avoid-column;
+    }
+}

@@ -1,4 +1,4 @@
-import { sample } from "@stdlib/random";
+import sample from "@stdlib/random/sample";
 import { enumerate, permutations, range } from "itertools";
 
 function simulate(settings) {

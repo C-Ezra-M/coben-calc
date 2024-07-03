@@ -1,2 +1,3 @@
-import { simulate, cobenAlgorithm } from "./coben";
-import 
+import { simulate, cobenAlgorithm } from "./coben.js";
+import 'bootstrap/dist/css/bootstrap.css';
+import './style.css';

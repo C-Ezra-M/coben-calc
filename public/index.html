@@ -8,10 +8,9 @@
     <link rel="preconnect" href="https://rsms.me/">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <link rel="stylesheet" href="https://get.mavo.io/mavo.css" />
-    <link rel="stylesheet" href="style.css">
     <!--<script src="https://get.mavo.io/mavo.js"></script>-->
-    <script src="mavo.js"></script>
-    <script src="bundle.js" defer></script>
+    <script src="https://deploy-preview-1025--getmavo.netlify.app/mavo.js"></script>
+    <link rel="stylesheet" href="bundle.css">
 </head>
 
 <body>
@@ -21,39 +20,50 @@
             the probability of a contestant getting eliminated, based on the current scores of everyone still in and the
             rewards for the next event.</p>
         <p>This calculator is built with <a href="https://mavo.io">Mavo</a>, a library for building web applications in
-			HTML, saving me the time and hassle with interactivity.</p>
+            HTML, saving me the time and hassle with interactivity.</p>
+        <p>Currently, the best way to use this calculator is to make a few lists separated with line breaks: one for contestant
+            names, one for current scores, and one for rewards for the next event.</p>
 
-        <h2>Current scores</h2>
-        <table class="current-scores">
-            <thead>
-                <th>Name</th>
-                <th>Score</th>
-            </thead>
-            <tbody mv-list property="contestant">
-                <tr mv-list-item>
-                    <td property="name"></td>
-                    <td property="score"></td>
-                </tr>
-            </tbody>
-        </table>
-        <button class="mv-add-contestant">Add contestant</button>
-        <h2>Rewards</h2>
-        <ol property="reward" mv-list mv-list-separator="\n">
-            <li mv-list-item></li>
-        </ol>
         <div>
-            [contestant]
-        </div>
-    </div>
-    <script type="module" src="/main.js"></script>
+            <label for="eliminations">Eliminations: </label><input type="number" id="eliminations"
+                        property="eliminations" value="1">
+                <label for="simulations">Simulations: </label><input type="number" id="simulations"
+                        property="simulations" value="1000000">
+                <input type="checkbox" property="systematic" id="systematic"><label for="systematic">
+                        Systematic</label>
+                <label for="precision">Decimal places: </label><input type="number" id="precision" property="precision"
+                        value="3">
+                    </div>
 
-    state = {
-    rewards: [],
-    eliminations: 1,
-    simulations: 1_000_000,
-    systematic: false,
-    precision: 3,
-    }
+        <div class="columns">
+            <div class="column">
+                <h2>Contestants' names</h2>
+                <ol property="contestant" mv-list>
+                    <li mv-list-item></li>
+                </ol>
+                <button class="mv-add-contestant">Add contestant name</button>
+
+            </div>
+            <div class="column">
+                <h2>Contestants' scores</h2>
+                <ol property="score" mv-list>
+                    <li mv-list-item></li>
+                </ol>
+                <button class="mv-add-score">Add score</button>
+
+            </div>
+            <div class="column">
+                <h2>Rewards</h2>
+                <ol property="reward" mv-list mv-list-separator="\n">
+                    <li mv-list-item></li>
+                </ol>
+                <button class="mv-add-reward">Add reward</button>
+            </div>
+        </div>
+
+        <button>Calculate</button>
+    </div>
+    <script src="bundle.js"></script>
 </body>
 
 </html>
