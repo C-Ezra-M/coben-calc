@@ -11,6 +11,7 @@
     <!--<script src="https://get.mavo.io/mavo.js"></script>-->
     <script src="https://deploy-preview-1025--getmavo.netlify.app/mavo.js"></script>
     <link rel="stylesheet" href="bundle.css">
+    <script src="bundle.js" defer></script>
 </head>
 
 <body class="m-3">
@@ -28,26 +29,32 @@
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label" for="eliminations">Eliminations</label>
                 <div class="col-sm-10">
-                    <input class="form-control" type="number" id="eliminations" property="eliminations" value="1">
+                    <input class="form-control" type="number" id="eliminations" property="eliminations" mv-default="1">
                 </div>
             </div>
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label" for="simulations">Simulations</label>
                 <div class="col-sm-10">
-                    <input class="form-control" type="number" id="simulations" property="simulations" value="1000000">
+                    <input class="form-control" type="number" id="simulations" property="simulations" mv-default="1000000">
                 </div>
             </div>
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label" for="precision">Decimal places</label>
                 <div class="col-sm-10">
-                    <input class="form-control" type="number" id="precision" property="precision" value="3">
+                    <input class="form-control" type="number" id="precision" property="precision" mv-default="3">
                 </div>
             </div>
             <div class="mb-3 row">
                 <div class="col-10 offset-sm-2">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" property="systematic" id="systematic">
-                        <label class="col-2 form-check-label" for="systematic">Systematic</label>
+                        <label class="form-check-label" for="systematic">Systematic</label>
+                    </div>
+                </div>
+                <div class="col-10 offset-sm-2">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" property="showNames" id="showNames">
+                        <label class="form-check-label" for="showNames">Show contestants' names in the calculation results</label>
                     </div>
                 </div>
             </div>
@@ -78,10 +85,9 @@
                 <button class="mv-add-reward">Add reward</button>
             </div>
         </div>
+        <button mv-action="cobenCalc.btnCalculate_click(Mavo.getData())">Calculate</button>
 
-        <button>Calculate</button>
     </div>
-    <script src="bundle.js"></script>
 </body>
 
 </html>

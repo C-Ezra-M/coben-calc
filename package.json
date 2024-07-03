@@ -12,9 +12,9 @@
     "serve": "^11.3.2"
   },
   "dependencies": {
-    "@stdlib/random": "^0.2.1",
     "bootstrap": "^5.3.3",
-    "itertools": "^2.3.2"
+    "itertools": "^2.3.2",
+    "lodash": "^4.17.21"
   },
   "scripts": {
     "build": "rollup -c",

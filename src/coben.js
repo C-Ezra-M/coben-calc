@@ -1,4 +1,4 @@
-import sample from "@stdlib/random/sample";
+import sample from "lodash/sampleSize"
 import { enumerate, permutations, range } from "itertools";
 
 function simulate(settings) {
