@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="bundle.css">
 </head>
 
-<body>
+<body class="m-3">
     <div class="mv-autoedit" mv-app mv-bar="none" mv-storage="local" mv-plugins="list-separator" id="app">
         <h1>COBEN Calculator</h1>
         <p>COBEN, short for <b>C</b>hance <b>O</b>f <b>B</b>eing <b>E</b>liminated <b>N</b>ext, is a percentage denoting
@@ -22,18 +22,36 @@
         <p>This calculator is built with <a href="https://mavo.io">Mavo</a>, a library for building web applications in
             HTML, saving me the time and hassle with interactivity.</p>
         <p>Currently, the best way to use this calculator is to make a few lists separated with line breaks: one for contestant
-            names, one for current scores, and one for rewards for the next event.</p>
+            names, one for current scores, and one for rewards for the next event. Then, copy-paste those lists here. It is therefore useful when working with a spreadsheet.</p>
 
-        <div>
-            <label for="eliminations">Eliminations: </label><input type="number" id="eliminations"
-                        property="eliminations" value="1">
-                <label for="simulations">Simulations: </label><input type="number" id="simulations"
-                        property="simulations" value="1000000">
-                <input type="checkbox" property="systematic" id="systematic"><label for="systematic">
-                        Systematic</label>
-                <label for="precision">Decimal places: </label><input type="number" id="precision" property="precision"
-                        value="3">
+        <div class="g-3">
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label" for="eliminations">Eliminations</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="number" id="eliminations" property="eliminations" value="1">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label" for="simulations">Simulations</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="number" id="simulations" property="simulations" value="1000000">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label" for="precision">Decimal places</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="number" id="precision" property="precision" value="3">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <div class="col-10 offset-sm-2">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" property="systematic" id="systematic">
+                        <label class="col-2 form-check-label" for="systematic">Systematic</label>
                     </div>
+                </div>
+            </div>
+        </div>
 
         <div class="columns">
             <div class="column">
