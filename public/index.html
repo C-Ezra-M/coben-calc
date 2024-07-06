@@ -29,31 +29,31 @@
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label" for="eliminations">Eliminations</label>
                 <div class="col-sm-10">
-                    <input class="form-control" type="number" id="eliminations" property="eliminations" mv-default="1">
+                    <input class="form-control" type="number" property id="eliminations" mv-default="1">
                 </div>
             </div>
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label" for="simulations">Simulations</label>
                 <div class="col-sm-10">
-                    <input class="form-control" type="number" id="simulations" property="simulations" mv-default="1000000">
+                    <input class="form-control" type="number" property id="simulations" mv-default="1000000">
                 </div>
             </div>
             <div class="mb-3 row">
                 <label class="col-sm-2 col-form-label" for="precision">Decimal places</label>
                 <div class="col-sm-10">
-                    <input class="form-control" type="number" id="precision" property="precision" mv-default="3">
+                    <input class="form-control" type="number" property id="precision" mv-default="3">
                 </div>
             </div>
             <div class="mb-3 row">
                 <div class="col-10 offset-sm-2">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" property="systematic" id="systematic">
+                        <input class="form-check-input" type="checkbox" property id="systematic">
                         <label class="form-check-label" for="systematic">Systematic</label>
                     </div>
                 </div>
                 <div class="col-10 offset-sm-2">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" property="showNames" id="showNames">
+                        <input class="form-check-input" type="checkbox" property id="showNames">
                         <label class="form-check-label" for="showNames">Show contestants' names in the calculation results</label>
                     </div>
                 </div>
@@ -85,8 +85,19 @@
                 <button class="mv-add-reward">Add reward</button>
             </div>
         </div>
-        <button mv-action="cobenCalc.btnCalculate_click(Mavo.getData())">Calculate</button>
-
+        <button
+            mv-action="set(results, cobenCalc.calculate(group(
+                contestants: contestant, scores: score, rewards: reward, eliminations: eliminations, simulations: simulations, systematic: systematic
+            )))">Calculate</button>
+        <h2>Results</h2>
+        <ol mv-property="results" mv-list mv-mode="read">
+            <li>
+                <span mv-if="showNames">[name]: </span>
+                <span mv-if="immune">IMMUNE</span>
+                <span mv-if="!immune and coben < pow(10, -precision)">&lt;[pow(10, -precision)]</span>
+                <span mv-if="!immune and coben >= pow(10, -precision)">[coben]</span>
+            </li>
+        </ol>
     </div>
 </body>
 
