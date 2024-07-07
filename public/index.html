@@ -123,9 +123,12 @@
         <ol mv-list mv-mode="read">
             <li mv-list-item property="results">
                 <span mv-if="showNames" property="name"></span><span mv-if="showNames">: </span>
-                <span mv-if="results.immune">IMMUNE</span>
-                <span mv-if="!results.immune and results.coben < pow(10, -precision)">&lt;[pow(10, -precision)]%</span>
-                <span mv-if="!results.immune and results.coben >= pow(10, -precision)">[round(results.coben, precision)]%</span>
+                <!-- property declarations - those are hidden due to special rendering -->
+                <span property="immune" hidden></span>
+                <span property="coben" hidden></span>
+                <span mv-if="immune">IMMUNE</span>
+                <span mv-if="!immune and coben < pow(10, -precision)">&lt;[pow(10, -precision)]%</span>
+                <span mv-if="!immune and coben >= pow(10, -precision)">[round(coben, precision)]%</span>
             </li>
         </ol>
         <div>
