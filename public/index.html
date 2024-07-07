@@ -15,7 +15,31 @@
 </head>
 
 <body class="m-3">
-    <div class="mv-autoedit" mv-app mv-bar="none" mv-storage="local" mv-plugins="list-separator" id="app">
+    <div hidden id="initial-data">
+        {
+            "eliminations": 1,
+            "simulations": 1000000,
+            "precision": 3,
+            "systematic": false,
+            "showNames": false,
+            "contestant": [
+                "Electric Yellow",
+                "Crimson",
+                "Coral"
+            ],
+            "score": [
+                "47178",
+                "45289",
+                "44810"
+            ],
+            "reward": [
+                "29192",
+                "23354",
+                "21894"
+            ]
+        }
+    </div>
+    <div class="mv-autoedit" mv-app mv-bar="none" mv-storage="local" mv-init="#initial-data" mv-plugins="list-separator" id="app">
         <h1>COBEN Calculator</h1>
         <p>COBEN, short for <b>C</b>hance <b>O</b>f <b>B</b>eing <b>E</b>liminated <b>N</b>ext, is a percentage denoting
             the probability of a contestant getting eliminated, based on the current scores of everyone still in and the
@@ -87,10 +111,15 @@
         </div>
         <button
             mv-action="set(results, cobenCalc.calculate(group(
-                contestants: contestant, scores: score, rewards: reward, eliminations: eliminations, simulations: simulations, systematic: systematic
+                contestants: contestant,
+                scores: score,
+                rewards: reward,
+                eliminations: eliminations,
+                simulations: simulations,
+                systematic: systematic
             )))">Calculate</button>
         <h2>Results</h2>
-        <ol mv-property="results" mv-list mv-mode="read">
+        <ol property="results" mv-list mv-mode="read">
             <li>
                 <span mv-if="showNames">[name]: </span>
                 <span mv-if="immune">IMMUNE</span>

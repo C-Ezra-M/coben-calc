@@ -1,8 +1,9 @@
 import sample from "lodash/sampleSize"
+import deepClone from "lodash/cloneDeep"
 import { enumerate, permutations, range } from "itertools";
 
 function simulate(settings) {
-    const currentScores = structuredClone(settings.currentScores)
+    const currentScores = deepClone(settings.currentScores)
     let rewards = settings.rewards;
     if (!settings.systematic) {
         rewards = sample(rewards, rewards.length)
@@ -17,11 +18,11 @@ function cobenAlgorithm(settings) {
     const { currentScores, systematic, simulations, eliminations, rewards } = settings
     const victims = []
     const rewardsIter = permutations(rewards)
-
+    // TODO DRYfy this section
     if (systematic) {
         for (let rewardList of rewardsIter) {
             victims.concat(simulate({
-                currentScores, systematic, eliminations, rewardList
+                currentScores, systematic, eliminations, rewards: rewardList
             }))
         }
     } else {
