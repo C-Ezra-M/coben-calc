@@ -11,7 +11,3 @@ I do know about [DocDesk's COBEN calculator](https://doc671.web.app/COBEN/). My 
 - Mobile friendliness
 - Any number of decimal places
 - JSON I/O
-
-## Notice about Mavo source code
-
-The Mavo source code is included within this repository because it isn't pulled from the upstream Mavo repository. Instead, it contains [a fix](https://github.com/mavoweb/mavo/pull/1025/commits/8276e86647300911369fc0b1b63977157add8d66), referenced in [mavoweb/mavo#1025](https://github.com/mavoweb/mavo/pull/1025).
