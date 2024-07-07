@@ -121,7 +121,7 @@
         <h2>Results</h2>
         <ol mv-list mv-mode="read">
             <li mv-list-item property="results">
-                <span mv-if="showNames">[results.name]: </span>
+                <span mv-if="showNames" property="name"></span><span mv-if="showNames">: </span>
                 <span mv-if="results.immune">IMMUNE</span>
                 <span mv-if="!results.immune and results.coben < pow(10, -precision)">&lt;[pow(10, -precision)]%</span>
                 <span mv-if="!results.immune and results.coben >= pow(10, -precision)">[round(results.coben, precision)]%</span>
