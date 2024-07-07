@@ -16,18 +16,18 @@ function simulate(settings) {
 
 function cobenAlgorithm(settings) {
     const { currentScores, systematic, simulations, eliminations, rewards } = settings
-    const victims = []
+    let victims = []
     const rewardsIter = permutations(rewards)
     // TODO DRYfy this section
     if (systematic) {
         for (let rewardList of rewardsIter) {
-            victims.concat(simulate({
+            victims = victims.concat(simulate({
                 currentScores, systematic, eliminations, rewards: rewardList
             }))
         }
     } else {
         for (let _ of range(simulations)) {
-            victims.concat(simulate({
+            victims = victims.concat(simulate({
                 currentScores, systematic, eliminations, rewards
             }))
         }
@@ -36,14 +36,16 @@ function cobenAlgorithm(settings) {
     return getCounts(victims)
 }
 
+// I wanted to use Map, but String object equality is not implemented in JS, only primitive string equality is
+// String objects get coerced into primitves when used as object keys
 function getCounts(array) {
-    const counts = new Map();
+    const counts = {};
 
     for (let i of array) {
-        if (counts.has(i)) {
-            counts.set(i, counts.get(i) + 1)
+        if (Object.hasOwn(counts, i)) {
+            counts[i] += 1;
         } else {
-            counts.set(i, 1)
+            counts[i] = 1;
         }
     }
 
