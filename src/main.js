@@ -17,15 +17,23 @@ function calculate(data) {
         simulations,
         eliminations,
     })
-    const countsKeys = Object.keys(counts);
+    const countsKeys = data.contestants;
     const totalSimulations = sum(Object.values(counts))
     const result = []
     for (let i of countsKeys) {
-        result.push({
-            name: i,
-            coben: counts[i] / totalSimulations * 100,
-            immune: counts[i] === 0,
-        })
+        if (!Object.hasOwn(counts, i)) {
+            result.push({
+                name: i,
+                coben: 0,
+                immune: true,
+            })
+        } else {
+            result.push({
+                name: i,
+                coben: counts[i] / totalSimulations * 100,
+                immune: false,
+            })
+        }
     }
     return result;
 }
