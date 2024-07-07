@@ -40,15 +40,18 @@
             "results": []
         }
     </div>
-    <div class="mv-autoedit" mv-app mv-bar="none" mv-storage="local" mv-init="#initial-data" mv-plugins="list-separator" id="app">
+    <div class="mv-autoedit" mv-app mv-bar="none" mv-storage="local" mv-init="#initial-data" mv-plugins="list-separator"
+        id="app">
         <h1>COBEN Calculator</h1>
         <p>COBEN, short for <b>C</b>hance <b>O</b>f <b>B</b>eing <b>E</b>liminated <b>N</b>ext, is a percentage denoting
             the probability of a contestant getting eliminated, based on the current scores of everyone still in and the
             rewards for the next event.</p>
         <p>This calculator is built with <a href="https://mavo.io">Mavo</a>, a library for building web applications in
             HTML, saving me the time and hassle with interactivity.</p>
-        <p>Currently, the best way to use this calculator is to make a few lists separated with line breaks: one for contestant
-            names, one for current scores, and one for rewards for the next event. Then, copy-paste those lists here. It is therefore useful when working with a spreadsheet.</p>
+        <p>Currently, the best way to use this calculator is to make a few lists separated with line breaks: one for
+            contestant
+            names, one for current scores, and one for rewards for the next event. Then, copy-paste those lists here. It
+            is therefore useful when working with a spreadsheet.</p>
 
         <div class="g-3">
             <div class="mb-3 row">
@@ -79,7 +82,8 @@
                 <div class="col-10 offset-sm-2">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" property id="showNames">
-                        <label class="form-check-label" for="showNames">Show contestants' names in the calculation results</label>
+                        <label class="form-check-label" for="showNames">Show contestants' names in the calculation
+                            results</label>
                     </div>
                 </div>
             </div>
@@ -110,8 +114,7 @@
                 <button class="mv-add-reward">Add reward</button>
             </div>
         </div>
-        <button
-            mv-action="set(results, cobenCalc.calculate(group(
+        <button mv-action="set(results, cobenCalc.calculate(group(
                 contestants: contestant,
                 scores: score,
                 rewards: reward,
