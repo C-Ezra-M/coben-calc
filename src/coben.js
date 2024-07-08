@@ -11,7 +11,7 @@ function simulate(settings) {
     for (let [i, s] of enumerate(currentScores)) {
         s.score += rewards[i];
     }
-    return currentScores.toSorted((a, b) => b.score - a.score).slice(-2).map(e => e.name)
+    return currentScores.toSorted((a, b) => b.score - a.score).slice(-settings.eliminations).map(e => e.name)
 }
 
 function cobenAlgorithm(settings) {
