@@ -9,7 +9,7 @@ jobs:
       pages: write
       id-token: write
     runs-on: ubuntu-latest
-    env:
+    environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
