@@ -134,9 +134,8 @@
                 <span mv-if="!immune and coben >= pow(10, -precision)">[round(coben, precision)]%</span>
             </li>
         </ol>
-        <div>
-            [results]
-        </div>
+        <h2>JSON output</h2>
+        <textarea class="form-control" mv-mode="read" style="height: 200px">[json(results)]</textarea>
     </div>
 </body>
 
