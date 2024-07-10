@@ -1,39 +1,57 @@
-import sample from "lodash/sampleSize"
+import shuffle from "lodash/shuffle";
+import cloneModule from "rfdc"
 import deepClone from "lodash/cloneDeep"
 import { enumerate, permutations, range } from "itertools";
 
+const clone = cloneModule({
+    proto: true,
+    constructorHandlers: [
+        [String, (s) => s.valueOf()],
+    ]
+})
+
 function simulate(settings) {
-    const currentScores = deepClone(settings.currentScores)
-    let rewards = settings.rewards;
-    if (!settings.systematic) {
-        rewards = sample(rewards, rewards.length)
-    }
+    const currentScores = clone(settings.currentScores)
+    //console.log(currentScores);
+    const { rewards } = settings;
     for (let [i, s] of enumerate(currentScores)) {
         s.score += rewards[i];
     }
-    return currentScores.toSorted((a, b) => b.score - a.score).slice(-settings.eliminations).map(e => e.name)
+    currentScores.sort((a, b) => a.score - b.score)
+    return currentScores.slice(0, settings.eliminations).map(e => e.name)
 }
 
 function cobenAlgorithm(settings) {
     const { currentScores, systematic, simulations, eliminations, rewards } = settings
-    let victims = []
-    const rewardsIter = permutations(rewards)
-    // TODO DRYfy this section
-    if (systematic) {
-        for (let rewardList of rewardsIter) {
-            victims = victims.concat(simulate({
-                currentScores, systematic, eliminations, rewards: rewardList
-            }))
-        }
-    } else {
-        for (let _ of range(simulations)) {
-            victims = victims.concat(simulate({
-                currentScores, systematic, eliminations, rewards
-            }))
-        }
+    const victims = []
+    const rewardsIter = (
+        systematic
+        ? permutations(rewards)
+        : shuffleIter(rewards, simulations)
+    );
+
+    for (let rewardList of rewardsIter) {
+        victims.splice(0, 0, ...simulate({
+            currentScores, eliminations, rewards: rewardList
+        }))
+        console.count("simulation")
     }
+    console.countReset("simulation")
 
     return getCounts(victims)
+}
+
+/**
+ * Iterator that yields shuffled arrays.
+ * 
+ * @param {T[]} array The array to shuffle.
+ * @param {number} count The number of shuffled arrays to yield.
+ * @yields {T[]} The shuffled array.
+ */
+function* shuffleIter(array, count) {
+    for (let _ of range(count)) {
+        yield shuffle(array)
+    }
 }
 
 // I wanted to use Map, but String object equality is not implemented in JS, only primitive string equality is
