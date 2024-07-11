@@ -4,6 +4,18 @@ import './style.css';
 import { chain, zip, repeat, take, sum } from "itertools";
 import factorial from "factorial";
 
+class Athlete {
+    constructor(name, initialScore) {
+        this.name = name
+        this.initialScore = initialScore
+        this.addedScore = 0
+        this.eliminations = 0
+    }
+    score() {
+        return this.initialScore + this.addedScore
+    }
+}
+
 function calculate(data) {
     // COMPAT Firefox and Safari don't yet support Iterator helpers, so I have to use eager itertools
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Iterator#browser_compatibility
