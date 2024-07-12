@@ -20,9 +20,11 @@ function calculate(data) {
     // COMPAT Firefox and Safari don't yet support Iterator helpers, so I have to use eager itertools
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Iterator#browser_compatibility
     console.group("COBEN simulation run info");
-    const currentScores = zip(data.contestants, data.scores).map(e => ({name: e[0], score: Number.parseInt(e[1])}))
+    const currentScores = zip(data.contestants, data.scores).map(e => new Athlete(e[0], Number.parseInt(e[1])))
     const rewards = take(currentScores.length, chain(data.rewards.map(e => Number.parseInt(e)), repeat(0, currentScores.length)))
-    const systematic = data.systematic.valueOf(); // using valueOf because Mavo properties are proxies
+    // using valueOf because Mavo properties are proxies, hence they have to use objects
+    // (since you can't proxy primitives)
+    const systematic = data.systematic.valueOf();
     const { eliminations } = data;
     let { simulations } = data;
     console.log(`Simulations declared: ${simulations}`);
