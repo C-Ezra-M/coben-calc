@@ -6,9 +6,9 @@ function simulate(settings) {
     for (let [i, s] of enumerate(currentScores)) {
         s.addedScore = rewards[i];
     }
-    currentScores.sort((a, b) => a.score() - b.score())
+    const sortedScores = currentScores.toSorted((a, b) => a.score() - b.score())
     for (let i of range(settings.eliminations)) {
-        currentScores[i].eliminations += 1;
+        sortedScores[i].eliminations += 1;
     }
 }
 
