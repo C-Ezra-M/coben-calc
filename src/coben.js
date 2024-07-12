@@ -19,14 +19,17 @@ function cobenAlgorithm(settings) {
         ? permutations(rewards)
         : shuffleIter(rewards, simulations)
     );
-
+    let simCount = 0;
+    const simulationsFivePercent = Math.floor(simulations / 20);
     for (let rewardList of rewardsIter) {
         simulate({
             currentScores, eliminations, rewards: rewardList
         })
-        console.count("simulation")
+        simCount += 1;
+        if (simCount === simulations || simCount % simulationsFivePercent === 0) {
+            console.log(`simulation: ${simCount}`)
+        }
     }
-    console.countReset("simulation")
 }
 
 /**
