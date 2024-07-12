@@ -1,9 +1,9 @@
-import { simulate, cobenAlgorithm } from "./coben.js";
-import 'bootstrap/dist/css/bootstrap.css';
-import './style.css';
+import { cobenAlgorithm } from "./coben.js";
 import { chain, zip, repeat, take, sum } from "itertools";
 import factorial from "factorial";
 
+import 'bootstrap/dist/css/bootstrap.css';
+import './style.css';
 class Athlete {
     constructor(name, initialScore) {
         this.name = name

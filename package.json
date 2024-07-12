@@ -15,8 +15,7 @@
     "bootstrap": "^5.3.3",
     "factorial": "^2.0.0",
     "itertools": "^2.3.2",
-    "lodash": "^4.17.21",
-    "rfdc": "^1.4.1"
+    "lodash": "^4.17.21"
   },
   "scripts": {
     "build": "rollup -c",
