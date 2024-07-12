@@ -1,9 +1,9 @@
-import { simulate, cobenAlgorithm } from "./coben.js";
-import 'bootstrap/dist/css/bootstrap.css';
-import './style.css';
+import { cobenAlgorithm } from "./coben.js";
 import { chain, zip, repeat, take, sum } from "itertools";
 import factorial from "factorial";
 
+import 'bootstrap/dist/css/bootstrap.css';
+import './style.css';
 class Athlete {
     constructor(name, initialScore) {
         this.name = name
@@ -20,9 +20,11 @@ function calculate(data) {
     // COMPAT Firefox and Safari don't yet support Iterator helpers, so I have to use eager itertools
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Iterator#browser_compatibility
     console.group("COBEN simulation run info");
-    const currentScores = zip(data.contestants, data.scores).map(e => ({name: e[0], score: Number.parseInt(e[1])}))
+    const currentScores = zip(data.contestants, data.scores).map(e => new Athlete(e[0], Number.parseInt(e[1])))
     const rewards = take(currentScores.length, chain(data.rewards.map(e => Number.parseInt(e)), repeat(0, currentScores.length)))
-    const systematic = data.systematic.valueOf(); // using valueOf because Mavo properties are proxies
+    // using valueOf because Mavo properties are proxies, hence they have to use objects
+    // (since you can't proxy primitives)
+    const systematic = data.systematic.valueOf();
     const { eliminations } = data;
     let { simulations } = data;
     console.log(`Simulations declared: ${simulations}`);
@@ -34,7 +36,7 @@ function calculate(data) {
     }
     console.log(`Simulations actually running: ${simulations}`);
     console.time("Algorithm run time");
-    const counts = cobenAlgorithm({
+    cobenAlgorithm({
         currentScores,
         rewards,
         systematic,
@@ -42,23 +44,15 @@ function calculate(data) {
         eliminations,
     })
     console.timeEnd("Algorithm run time");
-    const countsKeys = data.contestants;
-    const totalSimulations = sum(Object.values(counts))
+    const totalSimulations = sum(currentScores.map(e => e.eliminations))
     const result = []
-    for (let i of countsKeys) {
-        if (!Object.hasOwn(counts, i)) {
-            result.push({
-                name: i,
-                coben: 0,
-                immune: true,
-            })
-        } else {
-            result.push({
-                name: i,
-                coben: counts[i] / totalSimulations * 100 * eliminations,
-                immune: false,
-            })
-        }
+    for (let i of currentScores) {
+        const coben = i.eliminations / totalSimulations * 100 * eliminations
+        result.push({
+            name: i.name,
+            coben,
+            immune: coben === 0,
+        })
     }
     console.groupEnd("COBEN simulation run info");
     return result;
