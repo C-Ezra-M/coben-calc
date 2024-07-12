@@ -36,7 +36,7 @@ function calculate(data) {
     }
     console.log(`Simulations actually running: ${simulations}`);
     console.time("Algorithm run time");
-    const counts = cobenAlgorithm({
+    cobenAlgorithm({
         currentScores,
         rewards,
         systematic,
@@ -44,23 +44,15 @@ function calculate(data) {
         eliminations,
     })
     console.timeEnd("Algorithm run time");
-    const countsKeys = data.contestants;
-    const totalSimulations = sum(Object.values(counts))
+    const totalSimulations = sum(currentScores.map(e => e.eliminations))
     const result = []
-    for (let i of countsKeys) {
-        if (!Object.hasOwn(counts, i)) {
-            result.push({
-                name: i,
-                coben: 0,
-                immune: true,
-            })
-        } else {
-            result.push({
-                name: i,
-                coben: counts[i] / totalSimulations * 100 * eliminations,
-                immune: false,
-            })
-        }
+    for (let i of currentScores) {
+        const coben = i.eliminations / totalSimulations * 100 * eliminations
+        result.push({
+            name: i.name,
+            coben,
+            immune: coben === 0,
+        })
     }
     console.groupEnd("COBEN simulation run info");
     return result;
