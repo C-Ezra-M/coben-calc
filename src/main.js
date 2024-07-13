@@ -24,15 +24,20 @@ function calculate(data) {
     const rewards = take(currentScores.length, chain(data.rewards.map(e => Number.parseInt(e)), repeat(0, currentScores.length)))
     // using valueOf because Mavo properties are proxies, hence they have to use objects
     // (since you can't proxy primitives)
-    const systematic = data.systematic.valueOf();
+    let systematic = data.systematic.valueOf();
     const { eliminations } = data;
     let { simulations } = data;
     console.log(`Simulations declared: ${simulations}`);
 
+    const maxPossibleSims = factorial(currentScores.length)
     if (systematic) {
-        simulations = factorial(currentScores.length)
+        simulations = maxPossibleSims
     } else {
-        simulations = Math.min(simulations, factorial(currentScores.length))
+        simulations = Math.min(simulations, maxPossibleSims)
+        if (simulations === maxPossibleSims) {
+            console.info("The systematic mode will be used, even though you didn't declare it, since fewer simulations will be run than declared.");
+            systematic = true;
+        }
     }
     console.log(`Simulations actually running: ${simulations}`);
     console.time("Algorithm run time");
