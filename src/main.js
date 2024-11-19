@@ -17,8 +17,8 @@ class Athlete {
 }
 
 function calculate(data) {
-    // COMPAT Firefox and Safari don't yet support Iterator helpers, so I have to use eager itertools
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Iterator#browser_compatibility
+    // COMPAT Safari doesn't yet support Iterator helpers, so I have to use eager itertools
+    // https://bugs.webkit.org/show_bug.cgi?id=248650
     console.group("COBEN simulation run info");
     const currentScores = zip(data.contestants, data.scores).map(e => new Athlete(e[0], Number.parseInt(e[1])))
     const rewards = take(currentScores.length, chain(data.rewards.map(e => Number.parseInt(e)), repeat(0, currentScores.length)))
