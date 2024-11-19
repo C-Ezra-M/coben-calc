@@ -15,3 +15,13 @@
         break-inside: avoid-column;
     }
 }
+
+#fork-me-on-github {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#first-heading {
+    margin-top: 5rem;
+}
