@@ -72,7 +72,7 @@
                     <li mv-list-item></li>
                 </ol>
                 <button class="mv-add-contestant btn btn-primary">Add contestant name</button>
-
+                <button class="btn btn-outline-danger" mv-action="clear(contestant)">Clear contestant names</button>
             </div>
             <div class="column">
                 <h2>Contestants' scores</h2>
@@ -80,6 +80,7 @@
                     <li mv-list-item></li>
                 </ol>
                 <button class="mv-add-score btn btn-primary">Add score</button>
+                <button class="btn btn-outline-danger" mv-action="clear(score)">Clear scores</button>
 
             </div>
             <div class="column">
@@ -88,6 +89,7 @@
                     <li mv-list-item></li>
                 </ol>
                 <button class="mv-add-reward btn btn-primary">Add reward</button>
+                <button class="btn btn-outline-danger" mv-action="clear(reward)">Clear rewards</button>
             </div>
         </div>
         <button class="btn btn-primary" mv-action="set(results, cobenCalc.calculate(group(
@@ -106,8 +108,8 @@
                 <span property="immune" hidden></span>
                 <span property="coben" hidden></span>
                 <span mv-if="immune">IMMUNE</span>
-                <span mv-if="!immune and coben < pow(10, -precision)">&lt;[pow(10, -precision)]%</span>
-                <span mv-if="!immune and coben >= pow(10, -precision)">[round(coben, precision)]%</span>
+                <span mv-if="!immune and coben < pow(10, -precision)">&lt;[json(pow(10, -precision))]%</span>
+                <span mv-if="!immune and coben >= pow(10, -precision)">[json(round(coben, precision))]%</span>
             </li>
         </ol>
         <h2>JSON output</h2>
