@@ -106,8 +106,8 @@
                 <span property="immune" hidden></span>
                 <span property="coben" hidden></span>
                 <span mv-if="immune">IMMUNE</span>
-                <span mv-if="!immune and coben < pow(10, -precision)">&lt;[pow(10, -precision)]%</span>
-                <span mv-if="!immune and coben >= pow(10, -precision)">[round(coben, precision)]%</span>
+                <span mv-if="!immune and coben < pow(10, -precision)">&lt;[json(pow(10, -precision))]%</span>
+                <span mv-if="!immune and coben >= pow(10, -precision)">[json(round(coben, precision))]%</span>
             </li>
         </ol>
         <h2>JSON output</h2>
