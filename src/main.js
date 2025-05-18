@@ -1,5 +1,5 @@
 import { cobenAlgorithm } from "./coben.js";
-import { chain, zip, repeat, take, sum } from "itertools";
+import { chain, zip, repeat, sum } from "itertools";
 import factorial from "factorial";
 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -17,11 +17,13 @@ class Athlete {
 }
 
 function calculate(data) {
-    // COMPAT Safari doesn't yet support Iterator helpers, so I have to use eager itertools
-    // https://bugs.webkit.org/show_bug.cgi?id=248650
     console.group("COBEN simulation run info");
     const currentScores = zip(data.contestants, data.scores).map(e => new Athlete(e[0], Number.parseInt(e[1])))
-    const rewards = take(currentScores.length, chain(data.rewards.map(e => Number.parseInt(e)), repeat(0, currentScores.length)))
+    // this one had to stay an array because its length is referenced later
+    const rewards = chain(
+        data.rewards.map(e => Number.parseInt(e)),
+        repeat(0, currentScores.length)
+    ).take(currentScores.length)
     // using valueOf because Mavo properties are proxies, hence they have to use objects
     // (since you can't proxy primitives)
     let systematic = data.systematic.valueOf();
