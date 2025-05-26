@@ -35,11 +35,12 @@ function cobenAlgorithm(settings) {
 /**
  * Iterator that yields shuffled arrays.
  * 
- * @param {T[]} array The array to shuffle.
+ * @param {IterableIterator} iter The iterable to shuffle.
  * @param {number} count The number of shuffled arrays to yield.
  * @yields {T[]} The shuffled array.
  */
-function* shuffleIter(array, count) {
+function* shuffleIter(iter, count) {
+    let array = [...iter]
     for (let _ of range(count)) {
         yield shuffle(array)
     }
