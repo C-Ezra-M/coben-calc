@@ -60,6 +60,7 @@ function calculate(data) {
                 name: i.name,
                 coben,
                 immune: coben === 0,
+                cases: i.eliminations,
             })
         }
         return result;
