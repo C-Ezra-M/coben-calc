@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en" class="mx-3">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>COBEN Calculator – FAQ</title>
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="stylesheet" href="./bundle.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"></script>
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"
+        onload='renderMathInElement(document.body, {delimiters: [
+  {left: "$$", right: "$$", display: true},
+  {left: "$", right: "$", display: false},
+  {left: "\$", right: "\$", display: false},
+  {left: "\\[", right: "\\]", display: true}
+]});'></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.32.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.32.2/tocbot.css">
+    <script defer src="/faq.js"></script>
+</head>
+
+<body class="my-3 mx-auto">
+    <a href="https://github.com/C-Ezra-M/coben-calc" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <main>
+        <h1>COBEN Calculator – FAQ</h1>
+        <p>Here I will try to answer common questions about the <a href="/">COBEN Calculator</a>.</p>
+        <div id="toc"></div>
+        <section>
+            <h2 id="inspiration">Why did you create it? 🌟</h2>
+            <p>I was inspired by multiple things.</p>
+            <p>Back in 2023, I created <a href="https://github.com/C-Ezra-M/coben-rs">such a calculator in Rust</a>, for use in the command line. I told one of my friends about it, and they asked if something like that can be usable as a web application, citing his circumstances at the time. I told him I'd make a web frontend for this calculator, but never went through with this idea. I didn't know much about hosting a website back then.</p>
+            <p>Later, I learned about <a href="https://doc671.web.app/COBEN/">DocDesk's calculator</a>, just to realize how rushed it looked, and had poor support for mass data entry. Knowing this issue, the only way I could fix it was to make my own app.</p>
+        </section>
+        <section>
+            <h2 id="tools">What did you use to make it? 🛠️</h2>
+            <p>Around the time I felt inspired to create this app, I was also getting to know the work of <a href="https://lea.verou.me">Lea Verou</a>. I can't stress how much I admire her work on open source projects, including <a href="https://lea.verou.me/projects/">those she authored</a>.</p>
+            <p><a href="https://mavo.io">Mavo</a> is just one of her projects. It allowed me to save time coding interactivity, while I would appreciate having that time to write an implementation of the algorithm. For the algorithm itself, I used a few external libraries due to gaps in JavaScript's standard library.</p>
+            <p>Styles are provided by both Mavo and <a href="https://getbootstrap.com">Boostrap</a>.</p>
+            <p>I decided to use <a href="https://rollupjs.org/">Rollup</a> for the learning experience. If I ever introduced unused code, Rollup will tree-shake it out when creating the bundle.</p>
+        </section>
+        <section>
+            <h2 id="confusing">This app seems so confusing. Can you show me how to use it? 🤷‍♂️</h2>
+            <p>The UI is meant to be as intuitive as I can make, but I made a video demo anyway. If you are confused, just give it a watch!</p>
+            <p>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/UPmZ1K6ozZk?si=5N6Rir8AVHZsYBZ2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </p>
+            <p><em>Note: </em> This demo is based on an older version of the app (specifically, commit <code><a href="https://github.com/C-Ezra-M/coben-calc/commit/3d2ff9012cd6f863f646fe58eee489209aef36de">3d2ff90</a></code>), as you can see by the wider layout and the buttons not looking as nice as they do now. However, the general usage of the app is still the same as back then.</p>
+        </section>
+        <section>
+            <h2 id="coben">What is COBEN? 🧐</h2>
+            <p><dfn>COBEN</dfn> is short for <b>C</b>hance <b>O</b>f <b>B</b>eing <b>E</b>liminated <b>N</b>ext. It is a percentage denoting
+            the probability of a contestant getting eliminated, based on the current scores of everyone still in and the
+            rewards for the next event. If the percentage is 0, the contestant has immunity.</p>
+            <p>It is a mainstay in Algicosathlons, Algotriacontathlons, and similar competitions that run on points. I think this metric was also pioneered by Cary Huang, who created probably the first ever Algodecathlon and Algicosathlon.</p>
+        </section>
+        <section>
+            <h2 id="systematic">What does systematic mode do? 📊</h2>
+            <p>Every permutation of the list will be taken into account. To put that into perspective, multiply the number of contestants by every positive whole number below it. In mathematics, this is known as factorial ($x!$). You can see how quickly it multiplies, as in the below table.</p>
+            <table class="table table-hover"><thead>
+                <tr>
+                    <th>$x$</th>
+                    <th>$x! = \prod_{i=1}^x i$</th>
+                </tr></thead>
+                <tbody>
+                <tr>
+                    <td>0</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>24</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>120</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>720</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>5040</td>
+                </tr>
+                </tbody>
+                </table>
+            <p>You may have noticed that $0! = 1$.</p>
+            <p>I don't recommend using systematic mode for more than 10 contestants. $10! = 3\,628\,800$, or over 3.6 <strong>million</strong> permutations!</p>
+        </section>
+    </main>
+</body>
+
+</html>

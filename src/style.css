@@ -5,6 +5,12 @@
 @supports (font-variation-settings: normal) {
     :root { --bs-body-font-family: InterVariable, sans-serif; }
 }
+body {
+    max-width: 1120px;
+}
+a:not(:hover) {
+    text-decoration: none;
+}
 
 .columns {
     columns: 3 22rem;
