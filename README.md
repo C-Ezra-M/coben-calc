@@ -18,4 +18,4 @@ I do know about [DocDesk's COBEN calculator](https://doc671.web.app/COBEN/). My 
 
 ## Bugs
 
-Bugs can be unexpected. In that case, [create a new issue](https://github.com/C-Ezra-M/coben-calc/issues/new). Make sure to include information on what your browser is ([WhatIsMyBrowser.com](https://www.whatismybrowser.com/) can help you with this), the data you attempted to use (names optional; if it's too long the minimum is a number of entries)
+Bugs can be unexpected. In that case, [create a new issue](https://github.com/C-Ezra-M/coben-calc/issues/new). Make sure to include information on what your browser is ([WhatIsMyBrowser.com](https://www.whatismybrowser.com/) can help you with this) and the data you attempted to use (names optional; if it's too long the minimum is a number of entries).
