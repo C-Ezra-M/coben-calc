@@ -69,7 +69,15 @@ export function getHeadings(container: HTMLElement, options?: Options) {
 
 export function addAnchorLinksToHeaders(container: HTMLElement, options?: Options) {
     for (let i of getHeadings(container, options)) {
-        const wrapper = document.createElement("div")
-        wrapper.classList.add()
+        const link = document.createElement("a")
+        link.href = "#" + encodeURIComponent(i.id)
+        link.innerHTML = i.innerHTML
+        link.classList.add("header-link")
+        i.replaceChildren(link)
     }
+}
+
+export function addTocAndAnchorLinks(container: HTMLElement, options?: Options) {
+    addToc(container, options)
+    addAnchorLinksToHeaders(container, options)
 }
