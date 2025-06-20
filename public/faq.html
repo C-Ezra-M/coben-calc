@@ -50,12 +50,44 @@
             <p><em>Note: </em> This demo is based on an older version of the app (specifically, commit <code><a href="https://github.com/C-Ezra-M/coben-calc/commit/3d2ff9012cd6f863f646fe58eee489209aef36de">3d2ff90</a></code>), as you can see by the wider layout and the buttons not looking as nice as they do now. However, the general usage of the app is still the same as back then.</p>
         </section>
         <section>
-            <h2 id="coben">What is COBEN? 🧐</h2>
+            <h2 id="coben">What even <em>is</em> COBEN? 🧐</h2>
             <p><dfn>COBEN</dfn> is short for <b>C</b>hance <b>O</b>f <b>B</b>eing <b>E</b>liminated <b>N</b>ext. It is a percentage denoting
             the probability of a contestant getting eliminated, based on the current scores of everyone still in and the
             rewards for the next event. If the percentage is 0, the contestant has immunity.</p>
             <p>It is a mainstay in Algicosathlons, Algotriacontathlons, and similar competitions that run on points. I think this metric was also pioneered by Cary Huang, who created probably the first ever Algodecathlon and Algicosathlon.</p>
         </section>
+        <!--<section>
+            <h2 id="algorithm">How does the COBEN algorithm work? 🔢</h2>
+            <p>To quote <a href="https://github.com/C-Ezra-M/coben-impls/blob/main/COBEN-ALGO.md">my own description</a> of the algorithm:</p>
+            <ol>
+                <li>Getting input</li>
+                <ol>
+                    <li>Let $S$ be the list of current scores, or a table, with the keys being
+    the contestants' names, and the values being the scores.</li>
+                    <li>Let $N$ be the list of scores for the next event.</li>
+                    <ul>
+                        <li>If the scores are not static, let $N$ be $N_i = m$, where $m$ is the maximum score that can be received in this event.</li>
+                    </ul>
+                    <li>Assert that $S$ and $N$ have equal length. If the assertion fails, exit early.</li>
+                </ol>
+                <li>Calculating the COBEN</li>
+                <ol>
+                    <li>Setup</li>
+                    <ol>
+                        <li>Let $r$ be $\bar{S} + \bar{N}$, with the top bar denoting arithmetic mean of the list's (or table's) values.</li>
+                        <li>Let $D$ be the list (or table) of inverse differences, defined as $D_i = \max\left(0, \dfrac{1}{S_i} - \dfrac{1}{r}\right)$.</li>
+                        <li>Let $C$ be an empty list (or table).</li>
+                    </ol>
+                    <li>For each $s$ of $S$:</li>
+                    <ol>
+                        <li>If $s \ge r$, append immunity for $\left\lfloor\dfrac{s}{r}\right\rfloor$ events to $C$.</li>
+                        <li>Otherwise, append COBEN equal to $\dfrac{100\%}{s \times \sum D_i}$ to $C$. ($\sum D_i$ is the sum of $D$'s values.)</li>
+                    </ol>
+                </ol>
+                <li>Output $C$.</li>
+            </ol>
+            <p>The linked page has a flow chart as well, but it needs work, so I am not including it here.</p>
+        </section>-->
         <section>
             <h2 id="systematic">What does systematic mode do? 📊</h2>
             <p>Every permutation of the list will be taken into account. To put that into perspective, multiply the number of contestants by every positive whole number below it. In mathematics, this is known as factorial ($x!$). You can see how quickly it multiplies, as in the below table.</p>
@@ -98,9 +130,15 @@
                     <td>5040</td>
                 </tr>
                 </tbody>
-                </table>
+            </table>
             <p>You may have noticed that $0! = 1$.</p>
             <p>I don't recommend using systematic mode for more than 10 contestants. $10! = 3\,628\,800$, or over 3.6 <strong>million</strong> permutations!</p>
+            <p>As the number of contestants increases, if you are not using systematic mode, the calculation will be less accurate; however, that is fully intentional. If you are using systematic mode, it will be very slow.</p>
+            <p>Assume a simulation takes around 120 milliseconds. (This may vary depending on the number of simulations.) Calculating for 20 contestants using systematic mode would mean almost 2.5 <strong>quintillion</strong> simulations. The calculation would take <strong>over 9 billion years</strong> to finish.</p>
+            $$20! = 2\,432\,902\,008\,176\,640\,000 \\
+            t = 120 \mathrm{\ ms} = 0.12 \mathrm{\ s} \\
+            \frac{20!}{t} \approx 2.9195 \times 10^{17} \mathrm{\ s} = 9.2513 \times 10^{9} \mathrm{\ years}$$
+            <p>9.25 billion is twice as high as the population of Asia: almost 4.7 billion people as of 2021.</p>
         </section>
     </main>
 </body>
