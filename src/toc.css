@@ -1,0 +1,15 @@
+.toc {
+    width: fit-content;
+    .toc-header {
+        font-weight: bold;
+        display: block;
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+    .toc-list {
+        
+    }
+}
+.header-link {
+    color: currentColor;
+}

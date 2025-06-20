@@ -11,7 +11,10 @@
     <!--<script src="https://get.mavo.io/mavo.js"></script>-->
     <script src="https://deploy-preview-1025--getmavo.netlify.app/mavo.js"></script>
     <link rel="stylesheet" href="./bundle.css">
-    <script src="./bundle.js" defer></script>
+    <script type="module">
+        import { calculate } from "./calculator.js"
+        window.cobenCalc = { calculate } // HACK allow cobenCalc to be seen by Mavo
+    </script>
 </head>
 
 <body class="my-3 mx-auto">
