@@ -1,7 +1,6 @@
 import { cobenAlgorithm } from "./coben.js";
 import { chain, zip, repeat, sum } from "itertools";
 import factorial from "factorial";
-import { addToc } from './toc.js'
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './style.css';
@@ -70,4 +69,4 @@ function calculate(data) {
     }
 }
 
-export { calculate, addToc }
+export { calculate }
