@@ -41,7 +41,7 @@ export function addToc(container: HTMLElement, options?: Options) {
     }
     wrapper.classList.add("toc")
     const tag = document.createElement("strong")
-    tag.id = "toc-header"
+    tag.classList.add("toc-header")
     tag.innerText = "Table of contents"
     wrapper.setAttribute("aria-describedby", "toc-header")
     wrapper.appendChild(tag)
