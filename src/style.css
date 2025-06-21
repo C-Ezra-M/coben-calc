@@ -21,3 +21,12 @@ a:not(:hover) {
         break-inside: avoid-column;
     }
 }
+
+iframe {
+    max-width: 100%;
+    height: auto;
+}
+
+.katex-display {
+    overflow-x: auto;
+}
