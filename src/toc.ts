@@ -65,7 +65,7 @@ export function addToc(container: HTMLElement, options?: Options) {
 }
 
 export function getHeadings(container: HTMLElement, options?: Options) {
-    return container.querySelectorAll<HTMLElement>({...defaultOptions, ...options ?? {}}.selector as string)
+    return Array.from(container.querySelectorAll<HTMLElement>({...defaultOptions, ...options ?? {}}.selector as string))
 }
 
 export function addAnchorLinksToHeaders(container: HTMLElement, options?: Options) {
