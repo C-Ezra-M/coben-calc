@@ -48,7 +48,7 @@ export function addToc(container: HTMLElement, options?: Options) {
     const list = document.createElement("ul")
     wrapper.appendChild(list)
     list.classList.add("toc-list")
-    for (let i of headings) {
+    for (let i of headings as any) {
         const link = document.createElement("a")
         link.href = "#" + encodeURIComponent(i.id)
         if ({...defaultOptions, ...options}.useInnerText) {
