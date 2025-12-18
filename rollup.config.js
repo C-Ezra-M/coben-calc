@@ -19,6 +19,7 @@ export default {
             //format: 'iife', // immediately-invoked function expression — suitable for <script> tags
             sourcemap: true,
             name: 'cobenCalc',
+            hoistTransitiveImports: false,
         },
             {
                 dir: 'public',
@@ -26,6 +27,7 @@ export default {
             //format: 'iife', // immediately-invoked function expression — suitable for <script> tags
             sourcemap: true,
             name: 'toc',
+            hoistTransitiveImports: false,
         }
     ],
     plugins: [
